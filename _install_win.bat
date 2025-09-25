@@ -43,7 +43,7 @@ if not "!nvcc_output!"=="" (
         python -m pip install torch==2.5.1+cu121 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu121
 
         # Now Install Deepspeed for python 3.10 / compiled with torch=2.5.1+cuda==12.1
-        python -m pip install deepspeed-0.15.2+cuda121-cp310-cp310-win_amd64.whl
+        python -m pip install deepspeed/deepspeed-0.15.2+cuda121-cp310-cp310-win_amd64.whl
     )
 ) else (
     echo CUDA not detected. Skipping PyTorch CUDA installation.
