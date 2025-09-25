@@ -1,7 +1,8 @@
-How to optimize the files for speed:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In Audacity - Save the (*.wav) file with the following settings for faster processing.
-
-> Channel: Mono
-> Formart: 16-bit PCM
->    Rate: 22050 Hz
+Recommended settings for audio files (for faster processing):
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In Audacity set:
+> Extension: *.wav (This is a must!)
+>   Channel: Mono
+>   Formart: 16-bit
+>      Rate: 22050 Hz
+>  Duration: ~10 secs (without noises and music)
