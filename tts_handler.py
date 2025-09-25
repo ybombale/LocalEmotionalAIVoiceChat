@@ -12,7 +12,7 @@ class TTSHandler:
     def __init__(self, config_file='tts_config.json'):
         with open(config_file, 'r') as f:
             self.config = json.load(f)
-        
+
         self.references_folder = self.config['references_folder']
         self.dbg_log = self.config['dbg_log']
         self.stop_event = threading.Event()
@@ -29,7 +29,8 @@ class TTSHandler:
         if self.config['use_local_model']:
             self.engine = CoquiEngine(
                 specific_model=self.config['specific_model'],
-                local_models_path=self.config['local_models_path']
+                local_models_path=self.config['local_models_path'],
+                language="ru", # Select language (comment out = english) - YB (Add also language in tts_config Maybe - but not needed)
             )
         else:
             self.engine = CoquiEngine()
@@ -72,7 +73,7 @@ class TTSHandler:
 
         self.stream.play_async(
             fast_sentence_fragment=True,
-            log_synthesized_text=True,
+            log_synthesized_text=False, # Default 'True'
             muted=True,
             on_audio_chunk=on_audio_chunk,
             minimum_sentence_length=10,
@@ -122,11 +123,12 @@ class TTSHandler:
             sentence = self.sentence_queue.get_sentence()
 
             if sentence:
-                emotion = sentence.emotion
-                if not emotion or emotion == "None":
-                    emotion = "neutral"
-                emotion_file = emotion + ".wav"
-                path = os.path.join(self.references_folder, emotion_file)
+                # Custom Code by YB - Replaced 'emotion' by my 'custom voice'
+                self.custome_voice_wav = self.config['reference_wav_file_name'] # Find the value set in tts_config.json
+                if not self.custome_voice_wav or self.custome_voice_wav == "None": # Check if the value is empty if yes, use default value.
+                    self.custome_voice_wav = "default_voice.wav" #default value (reference audio wav file)
+
+                path = os.path.join(self.references_folder, self.custome_voice_wav) # Removed [, emotion_file] - add in tts_config.json '/audio.wav' after "reference_wavs"
                 if os.path.exists(path):
                     if self.dbg_log:
                         print(f"Setting TTS Emotion path: {path}")
@@ -134,7 +136,7 @@ class TTSHandler:
                 else:
                     if self.dbg_log:
                         print(f"No emotion found for path: {path}")
-                    path = os.path.join(self.references_folder, "neutral.wav")
+                    path = os.path.join(self.references_folder, "default_voice.wav")
                     if os.path.exists(path):
                         if self.dbg_log:
                             print(f"Setting neutral: {path}")
