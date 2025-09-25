@@ -1,7 +1,8 @@
 {
     "use_local_model": true,
-    "specific_model": "Lasinya",
-    "local_models_path": "D:\\Projekte\\TestLingu\\Linguflex\\models\\xtts",
+    "specific_model": "Lasinya_01",
+    "local_models_path": "B:\\.my_Scripts\\STS\\LocalEmotionalAIVoiceChat\\models\\xtts",
     "references_folder": "reference_wavs",
+    "reference_wav_file_name": "default_voice.wav",
     "dbg_log": false
 }
