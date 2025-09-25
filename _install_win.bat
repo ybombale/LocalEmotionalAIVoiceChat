@@ -1,7 +1,8 @@
 @echo off
 
-:: Set Python path (adjust this if needed)
-set PYTHON_EXE=D:\Programme\miniconda3\envs\textgen\python.exe
+:: Set Python path (adjust this if needed) ← This assumes python 3.10(as recommended), if not the case, adjust the code accordingly.
+:: If Python isn't added to Path Environment Variable, replace 'python' for full path below (i.e. > D:\Programme\miniconda3\envs\textgen\python.exe)
+set PYTHON_EXE=python
 
 
 echo Installing EmotionalLocalVoiceChat...
@@ -36,14 +37,21 @@ if not "!nvcc_output!"=="" (
     echo !nvcc_output! | findstr /C:"11.8" >nul
     if !errorlevel! equ 0 (
         echo CUDA 11.8 detected. Installing PyTorch for CUDA 11.8...
-        python -m pip install torch==2.3.1+cu118 torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cu118
+        python -m pip install torch==2.5.1+cu118 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu118
     ) else (
         echo CUDA 12.x detected. Installing PyTorch for CUDA 12.1...
-        python -m pip install torch==2.3.1+cu121 torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cu121
+        python -m pip install torch==2.5.1+cu121 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+
+        # Now Install Deepspeed for python 3.10 / compiled with torch=2.5.1+cuda==12.1
+        python -m pip install deepspeed-0.15.2+cuda121-cp310-cp310-win_amd64.whl
     )
 ) else (
     echo CUDA not detected. Skipping PyTorch CUDA installation.
 )
+
+:: Downgrade transformers pip (v4.55.0 also seems to work) ← (Added by YB)
+echo Transformers downgrading...
+python -m pip install transformers==4.55.4
 
 echo Installation completed.
 pause
