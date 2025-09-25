@@ -11,14 +11,14 @@ import logging
 @dataclass
 class Config:
     llm_provider: str = "lmstudio"  # "llamacpp" or "ollama" or "openai" or "anthropic" or "lmstudio"
-    print_emotions: bool = True
+    print_emotions: bool = False # Default 'True'
     print_llm_text: bool = True
     use_tts: bool = True
     dbg_log: bool = False
     log_level_nondebug = logging.WARNING
     references_folder: str = "reference_wavs"
-    stt_model: str = "tiny.en"
-    stt_language: str = "en"
+    stt_model: str = "base"
+    stt_language: str = "ru"
     stt_silence_duration: float = 0.15
     chat_params_file: str = "chat_params.json"    
     tts_config_file: str = "tts_config.json"
@@ -163,7 +163,7 @@ class Main:
             self.tts_handler.sentence_queue.add_emotion(current_emotion)
 
     def run(self):
-        self.print_available_emotions()
+        # self.print_available_emotions() # Disabled by YB
         self.print_character_info()
         #self.print_scenario()
         system_prompt = self.get_system_prompt()
