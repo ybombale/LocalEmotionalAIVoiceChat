@@ -30,7 +30,7 @@ class TTSHandler:
             self.engine = CoquiEngine(
                 specific_model=self.config['specific_model'],
                 local_models_path=self.config['local_models_path'],
-                language="ru", # Select language (comment out = english)
+                language=self.config['reference_wav_file_lang'], # comment this out to auto-detect language.
             )
         else:
             self.engine = CoquiEngine()
