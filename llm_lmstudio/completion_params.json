@@ -1,5 +1,5 @@
 {
-    "model": "lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF",
+    "model": "google/gemma-3-4b",
     "parameters": {
         "temperature": 0.7,
         "max_tokens": 1000,
