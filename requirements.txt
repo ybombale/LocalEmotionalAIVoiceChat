@@ -1,2 +1,2 @@
-RealtimeTTS[coqui]==0.4.5
-RealtimeSTT==0.2.1
+RealtimeTTS[coqui]==0.5.7
+RealtimeSTT==0.3.104
