@@ -4,5 +4,6 @@
     "local_models_path": "B:\\.my_Scripts\\STS\\LocalEmotionalAIVoiceChat\\models\\xtts",
     "references_folder": "reference_wavs",
     "reference_wav_file_name": "default_voice.wav",
+    "reference_wav_file_lang": "en",
     "dbg_log": false
 }
