@@ -6,7 +6,7 @@ cd /d %~dp0
 
 echo Creating Conda Env...
 call conda create -y --prefix=.\.LocalEmotional python=3.10.9
-call conda activate .\.LocalEmotional
+:: conda env dont need to be activated. we will only use for python version.
 
 :: where python (Use this if need to find python locations)
 :: Remove conda env with the following code:
