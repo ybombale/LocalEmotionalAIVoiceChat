@@ -8,7 +8,6 @@ conda activate ./.LocalEmotional
 set PYTHON_EXE=.\.LocalEmotional\python.exe
 
 
-
 echo Installing EmotionalLocalVoiceChat...
 setlocal enabledelayedexpansion
 
