@@ -1,7 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
 
-
 :: Set current directory
 cd /d %~dp0
 
