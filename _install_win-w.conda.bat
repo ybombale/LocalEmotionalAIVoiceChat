@@ -9,6 +9,9 @@ call conda create -y --prefix=.\.LocalEmotional python=3.10.9
 call conda activate .\.LocalEmotional
 
 :: where python (Use this if need to find python locations)
+:: Remove conda env with the following code:
+:: 1.1- conda deactivate
+:: 1.2- conda env remove --prefix=.\.LocalEmotional
 
 :: Set Python path (adjust this if needed)
 set PYTHON_EXE=.\.LocalEmotional\python.exe
