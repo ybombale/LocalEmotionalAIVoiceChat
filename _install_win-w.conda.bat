@@ -60,4 +60,8 @@ echo Transformers downgrading...
 python -m pip install transformers==4.55.4
 
 echo Installation completed.
+
+echo Now lets download the models (Be patiente...)
+python download_tts_model.py
+
 pause
