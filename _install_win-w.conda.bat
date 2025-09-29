@@ -1,7 +1,7 @@
 @echo off
 
-:: conda create -y --prefix=./.LocalEmotional python=3.10.9
-:: conda activate ./.LocalEmotional
+conda create -y --prefix=./.LocalEmotional python=3.10.9
+conda activate ./.LocalEmotional
 :: where python
 
 :: Set Python path (adjust this if needed)
