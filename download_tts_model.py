@@ -32,7 +32,7 @@ if __name__ == "__main__":
         logging.error(f"No need to delete .git file. It does not exist in {git_folder_path}.")
 
 
-if not subfolder: # ***If 'subfolder' is empty, then download the full repo***
+if not subfolder: # ***If 'subfolder' variable is empty(""), then download the full repo***
         
         #Get repo name with Regex (requires: 'import re')
         repo_name_pattern = r"([^\/]+$)" # source → https://stackoverflow.com/a/47942256
@@ -51,7 +51,7 @@ if not subfolder: # ***If 'subfolder' is empty, then download the full repo***
 
         logging.info(f"Files downloaded successfully to: {local_dir}")
 
-else: # ***If 'subfolder' is NOT empty, then download the especific repo***
+else: # ***If 'subfolder' variable is NOT empty, then download the especific repo***
         
          # Start setting up download folder and comparing files
         def download_subfolder(repo_url, subfolder, local_dir):
