@@ -47,13 +47,39 @@ if not "!nvcc_output!"=="" (
     ) else (
         echo CUDA 12.x detected. Installing PyTorch for CUDA 12.1...
         python -m pip install torch==2.5.1+cu121 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu121
-
-        # Now Install Deepspeed for python 3.10 / compiled with torch=2.5.1+cuda==12.1
-        python -m pip install deepspeed/deepspeed-0.15.2+cuda121-cp310-cp310-win_amd64.whl
     )
 ) else (
     echo CUDA not detected. Skipping PyTorch CUDA installation.
 )
+
+
+:: If CUDA installed - Check Python to Install Deepspeed
+echo Detecting Python version...
+for /f "tokens=2" %%i in ('python --version 2^>^&1') do set PYTHON_VERSION=%%i
+echo Python Version: !PYTHON_VERSION!
+
+if not "!nvcc_output!"=="" (
+    echo !nvcc_output! | findstr /C:"11.8" >nul
+    if !errorlevel! equ 0 (
+        echo Skipping Deepspeed installation. CUDA 11.8 is Not compatible with available versions of Deepspeed.
+    ) else (
+        echo Checking for python...
+        if "%PYTHON_VERSION:~0,4%"=="3.10" (
+            echo CUDA 12.x and python 3.10 detected. 
+            echo Installing Deepspeed for python 3.10 compiled with torch=2.5.1+cuda==12.1
+            python -m pip install deepspeed/deepspeed-0.15.2+cuda121-cp310-cp310-win_amd64.whl               
+        ) else if "%PYTHON_VERSION:~0,4%"=="3.11" (
+            echo CUDA 12.x and python 3.11 detected.
+            echo Installing Deepspeed for python 3.11 compiled with torch=2.5.1+cuda==12.1
+            python -m pip install deepspeed/deepspeed-0.15.2+cuda121-cp311-cp311-win_amd64.whl                
+        ) else (
+        echo Skipping Deepspeed installation. Not compatible version of Deepspeed found. 
+        )
+    )
+) else (
+    echo Skipping Deepspeed installation. CUDA not detected...
+)
+
 
 :: Downgrade transformers pip (v4.55.0 also seems to work) ← (Added by YB)
 echo Transformers downgrading...
