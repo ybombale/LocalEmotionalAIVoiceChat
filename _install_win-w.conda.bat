@@ -61,7 +61,8 @@ python -m pip install transformers==4.55.4
 
 echo Installation completed.
 echo
-echo Now lets download the models. Be patiente! (Wait for msg: "Press any key to continue...")
+echo Now lets download the models. Be patiente! Wait for msg: "Press any key to continue..."
+echo
 python download_tts_model.py
 
 pause
