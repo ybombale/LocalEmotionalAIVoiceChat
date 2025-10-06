@@ -6,3 +6,5 @@ All these files were compiled with:
 Enabled options:
 - ver.0.15.2 → `CUTLASS_OPS`, `SPARSE_ATTN`
 - ver.0.16.1 → `CUTLASS_OPS`, `SPARSE_ATTN`, `INFERENCE_CORE_OPS` 
+
+Use 'ds_report' to check all installed/enabled options.
