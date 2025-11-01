@@ -4,7 +4,7 @@
     "local_models_path": ".\\models\\xtts",
     "_comment": "Below are the settings for add the filename and language of audio to be used as reference",
     "references_folder": "reference_wavs",
-    "reference_wav_file_name": "default_voice.wav",
-    "reference_wav_file_lang": "en",
+    "reference_wav_file_name": "ru_female_Kropina_YouTube.wav",
+    "reference_wav_file_lang": "ru",
     "dbg_log": false
 }
